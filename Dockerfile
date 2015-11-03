@@ -21,6 +21,7 @@ RUN a2enmod expires
 RUN a2enmod headers
 RUN a2enmod remoteip
 RUN a2enmod ldap
+RUN a2enmod authnz_ldap
 
 RUN  rm -rf /var/lib/apt/lists/*
 ADD ./default /etc/nginx/sites-available/default
