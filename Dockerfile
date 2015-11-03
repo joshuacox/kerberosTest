@@ -13,7 +13,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ 
 RUN mkdir -p /srv/www
 RUN echo "<?php phpinfo(); ?>" > /srv/www/phpinfo.php
 
-ADD ./default /etc/nginx/sites-available/default
 
 RUN apt-get update
 RUN apt-get install -y apache2 libapache2-mod-php5 php5-mysql libapache2-mod-webauthldap
@@ -24,6 +23,7 @@ RUN a2enmod remoteip
 RUN a2enmod ldap
 
 RUN  rm -rf /var/lib/apt/lists/*
+ADD ./default /etc/nginx/sites-available/default
 ADD ./apache2.conf /etc/apache2/apache2.conf
 ADD ./default.conf /etc/apache2/sites-available/000-default.conf
 ADD ./security.conf /etc/apache2/conf-available/security.conf
