@@ -9,6 +9,7 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv-keys E5267A6C; \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ && mv /usr/bin/composer.phar /usr/bin/composer
+RUN mkdir -p /srv/www
 RUN echo "<?php phpinfo(); ?>" > /srv/www/phpinfo.php
 
 ADD ./default /etc/nginx/sites-available/default
